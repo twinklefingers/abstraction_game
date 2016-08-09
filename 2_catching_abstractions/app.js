@@ -59,29 +59,10 @@ for (var i = 0; i < 10; i++) {
 console.log('Our scheduled matches', matches);
 
 
-// function battle(match) {
-//     for (var i = 0; i < match.length; i++) {
-//         match[i].matches++;
-//     }
-//     if (match[0].luck > match[1].luck) {
-//         winner(match[0]);
-//     } else {
-//         winner(match[1]);
-//     }
-// }
-
-// function battle
-// function winner
-// function loser
-// function runAllBattles
-
-// determine the winner and loser for each match
-
 matches.forEach(function(element) {
-
-    // if (element[i].isAlive) { // if both contestants alive, run the match
-
-    //wins
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // Winner Function
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     function win(element) {
         element.luck++;
         if (!element.isVillain) {
@@ -92,18 +73,9 @@ matches.forEach(function(element) {
     }
 
 
-
-
-
-    //
-    // if (element[0].luck > element[1].luck) { // if hero luck greater than villain luck
-    //     heroWins++; // add a win for the heroes
-    //     element[0].luck++; // increase the hero's luck
-    // } else if (element[0].luck < element[1].luck) { // if hero luck less than villain luck, villain wins
-    //     capitolWins++; // add a win for the capitol/villains
-    //     element[1].luck++; // increase the villain's luck
-
-    //loses
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // Loser Function
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     function lose(element) {
         element.luck--;
         if (element.isVillain) {
@@ -113,19 +85,9 @@ matches.forEach(function(element) {
         }
     }
 
-
-
-
-    // element[1].luck--; // decrease the villain's luck
-    // if (element[1].luck < 0) { // if the luck falls below zero, character is dead
-    //     element[1].isAlive = false;
-    // }
-    // element[0].luck--; // decrease the hero's luck
-    // if (element[0].luck < 0) { // if the luck falls below zero, character is dead
-    //     element[0].isAlive = false;
-    // }
-
-    //etc
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // Luck Function
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     function luckBattle(element) {
         if (element[1].luck > element[0].luck) {
             win(element[1]);
@@ -138,29 +100,14 @@ matches.forEach(function(element) {
             element.luck = 10;
         }
         if (element.luck <= 0) {
-            element.isAlive = false;
+            !element.isAlive;
         }
     }
 
 
-
-
-    //         if (element[0].luck > 10) { // winner's luck cannot be above 10
-    //             element[0].luck = 10;
-    //         }
-    //         if (element[1].luck > 10) { // winner's luck cannot be above 10
-    //             element[1].luck = 10;
-    //         }
-    //
-    //     } else if (!element[1].isAlive && element[0].isAlive) { // if the villain is not alive, but the hero is, automatic win for hero
-    //         heroWins++; // add a win for the heroes
-    //     } else if (!element[0].isAlive && element[1].isAlive) { // if the hero is not alive, but the villain is, automatic win for villain
-    //         capitolWins++; // add a win for the capitol/villains
-    //     }
     luckBattle(matches);
     console.log(heroWins);
     console.log(capitolWins);
-
 });
 
 conclusion();
