@@ -58,59 +58,61 @@ for (var i = 0; i < 10; i++) {
 
 console.log('Our scheduled matches', matches);
 
-
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Create Random Matches
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 matches.forEach(function(element) {
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // Winner Function
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    function win(element) {
-        element.luck++;
-        if (!element.isVillain) {
-            heroWins++;
-        } else {
-            capitolWins++;
-        }
-    }
-
-
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // Loser Function
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    function lose(element) {
-        element.luck--;
-        if (element.isVillain) {
-            heroWins--;
-        } else {
-            capitolWins--;
-        }
-    }
-
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // Luck Function
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    function luckBattle(element) {
-        if (element[1].luck > element[0].luck) {
-            win(element[1]);
-            lose(element[0]);
-        } else {
-            win(element[0]);
-            lose(element[1]);
-        }
-        if (element.luck > 10) { // winner's luck cannot be above 10
-            element.luck = 10;
-        }
-        if (element.luck <= 0) {
-            !element.isAlive;
-        }
-    }
-
-
     luckBattle(matches);
-    console.log(heroWins);
-    console.log(capitolWins);
 });
 
 conclusion();
+console.log(heroWins);
+console.log(capitolWins);
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Luck Function
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function luckBattle(element) {
+    if (element[1].luck > element[0].luck) {
+        win(element[1]);
+        lose(element[0]);
+    } else {
+        win(element[0]);
+        lose(element[1]);
+    }
+    if (element.luck > 10) { // winner's luck cannot be above 10
+        element.luck = 10;
+    }
+    if (element.luck <= 0) {
+        !element.isAlive;
+    }
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Winner Function
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function win(element) {
+    element.luck++;
+    if (!element.isVillain) {
+        heroWins++;
+    } else {
+        capitolWins++;
+    }
+}
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Loser Function
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function lose(element) {
+    element.luck--;
+    if (element.isVillain) {
+        heroWins--;
+    } else {
+        capitolWins--;
+    }
+}
+
 
 // display the results of our matches in the console
 function conclusion() {
